@@ -5,15 +5,23 @@ import (
 	"fmt"
 	"os"
 	"strings"
+
+	"github.com/VoluteTech/pokedexcli/internal/api"
 )
+
+type config struct {
+	pokeapiClient api.Client
+	nextLocationURL *string
+	prevLocationURL *string
+}
 
 type cliCommand struct {
 	name string
 	description string
-	callback func() error
+	callback func(*config) error
 }
 
-func startRepl() {
+func startRepl(cfg *config) {
 	scanner := bufio.NewScanner(os.Stdin)
 	for {
 		fmt.Print("Pokedex > ")
@@ -27,7 +35,7 @@ func startRepl() {
 		commandName := userInput[0]
 		cmd, exists := getCommands()[commandName]
 		if exists {
-			err := cmd.callback()
+			err := cmd.callback(cfg)
 			if err != nil {
 				fmt.Println(err)
 			}
@@ -60,6 +68,16 @@ func getCommands() map[string]cliCommand {
 			name: "help",
 			description: "Give you informations about the pokedexcli",
 			callback: commandHelp,
+		},
+		"map": {
+			name: "map next",
+			description: "List 20 location areas of the pokemon world",
+			callback: commandMapf,
+		},
+		"mapb": {
+			name: "map back",
+			description: "List the last 20 location areas of the pokemon world",
+			callback: commandMapb,
 		},
 	}
 }
