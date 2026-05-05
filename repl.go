@@ -70,12 +70,12 @@ func getCommands() map[string]cliCommand {
 			callback: commandHelp,
 		},
 		"map": {
-			name: "map next",
+			name: "map",
 			description: "List 20 location areas of the pokemon world",
 			callback: commandMapf,
 		},
 		"mapb": {
-			name: "map back",
+			name: "mapb",
 			description: "List the last 20 location areas of the pokemon world",
 			callback: commandMapb,
 		},
