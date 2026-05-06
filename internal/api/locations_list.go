@@ -49,7 +49,7 @@ func (c *Client) ListLocations(pageURL *string) (RespShallowLocation, error) {
 }
 
 func (c *Client) GetLocation(locationName string) (Location, error) {
-	url := baseURL + "/location-area" + locationName
+	url := baseURL + "/location-area/" + locationName
 	
 	if val, ok := c.cache.Get(url); ok {
 		var locationResp Location
