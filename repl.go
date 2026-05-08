@@ -13,6 +13,7 @@ type config struct {
 	pokeapiClient api.Client
 	nextLocationURL *string
 	prevLocationURL *string
+	caughtPokemon map[string]api.Pokemon
 }
 
 type cliCommand struct {
