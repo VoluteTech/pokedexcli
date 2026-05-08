@@ -28,7 +28,7 @@ func (c *Client) GetPokemonInfos(pokemonName string) (Pokemon, error) {
 		return Pokemon{}, err
 	}
 
-	defer req.Body.Close()
+	defer res.Body.Close()
 	dat, err := io.ReadAll(res.Body)
 	if err != nil {
 		return Pokemon{}, err
