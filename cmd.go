@@ -59,7 +59,7 @@ func commandMapb(cfg *config, args ...string) error {
 	return nil
 }
 
-func explore(cfg *config, args ...string) error {
+func commandExplore(cfg *config, args ...string) error {
 	if len(args) != 1 {
 		return errors.New("you must provide a location name")
 	}
@@ -77,7 +77,7 @@ func explore(cfg *config, args ...string) error {
 	return nil
 }
 
-func catch(cfg *config, args ...string) error {
+func commandCatch(cfg *config, args ...string) error {
 	if len(args) != 1 {
 		return errors.New("you must provide a pokemon name")
 	}
@@ -100,7 +100,7 @@ func catch(cfg *config, args ...string) error {
 	return nil
 }
 
-func inspect(cfg *config, args ...string) error {
+func commandInspect(cfg *config, args ...string) error {
 	if len(args) != 1 {
 		return errors.New("you must provide a pokemon name")
 	}
@@ -124,6 +124,15 @@ func inspect(cfg *config, args ...string) error {
 	fmt.Print("Types:\n")
 	for _, t := range pokemon.Types {
 		fmt.Printf("- %v\n", t.Type.Name)
+	}
+
+	return nil
+}
+
+func commandPokedex(cfg *config, args ...string) error {
+	fmt.Print("Your pokedex:\n")
+	for _, v := range cfg.caughtPokemon {
+		fmt.Printf("- %v\n", v.Name)
 	}
 
 	return nil
