@@ -6,13 +6,7 @@
   <img src="https://img.shields.io/badge/API-PokeAPI-blue?style=for-the-badge" alt="API">
 </p>
 
-<p align="center">
-  <img width="200" src="https://raw.githubusercontent.com/PokeAPI/pokeapi/master/static/images/logo.png" alt="Pokedex">
-</p>
-
 A command-line Pokedex built with Go, powered by the [PokeAPI](https://pokeapi.co/).
-
----
 
 ## Features
 
